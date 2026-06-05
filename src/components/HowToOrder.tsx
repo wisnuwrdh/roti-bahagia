@@ -1,50 +1,72 @@
-const steps = [
-  {
-    icon: "mark_chat_read",
-    title: "1. Chat Kami",
-    description: "Hubungi via WhatsApp, pilih roti favoritmu.",
-  },
-  {
-    icon: "receipt_long",
-    title: "2. Konfirmasi",
-    description: "Kami siapkan pesanan dan total biayanya.",
-  },
-  {
-    icon: "shopping_bag",
-    title: "3. Ambil/Terima",
-    description: "Ambil di toko atau tunggu diantar ke rumah.",
-  },
-];
+import Icon from "./Icon";
 
 export default function HowToOrder() {
-  return (
-    <div>
-      <div className="text-center mb-16">
-        <h2 className="font-noto-serif text-headline-md text-primary mb-4">
-          Pesan Semudah Chat — 3 Langkah Saja
-        </h2>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-        {/* Connecting line for desktop */}
-        <div className="hidden md:block absolute top-12 left-1/6 right-1/6 h-0.5 bg-outline-variant/50 z-0"></div>
+  const steps = [
+    {
+      number: "1",
+      title: "Chat Kami di WhatsApp",
+      description: "Beritahu produk yang kamu mau. Kami bantu pilihkan jika perlu.",
+    },
+    {
+      number: "2",
+      title: "Konfirmasi Pesanan",
+      description: "Kami konfirmasi ketersediaan, harga, dan waktu siapnya. Semua jelas sebelum kamu bayar.",
+    },
+    {
+      number: "3",
+      title: "Ambil atau Terima Pesananmu",
+      description: "Tinggal datang ke toko atau kami atur pengirimannya. Sesuai kesepakatan.",
+    },
+  ];
 
-        {steps.map((step) => (
-          <div
-            key={step.title}
-            className="relative z-10 flex flex-col items-center text-center space-y-4"
-          >
-            <div className="w-24 h-24 rounded-full bg-surface-container-highest border-4 border-background flex items-center justify-center soft-shadow text-primary">
-              <span className="material-symbols-outlined text-[40px]">
-                {step.icon}
-              </span>
+  return (
+    <section className="py-6 md:py-24 bg-surface-container-low">
+      <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        {/* Headline + Subheadline */}
+        <div className="text-center mb-10 md:mb-12 space-y-3">
+          <h2 className="font-noto-serif text-headline-md md:text-[28px] text-primary">
+            Pesan Semudah Chat: 3 Langkah Saja
+          </h2>
+          <p className="font-be-vietnam-pro text-body-lg text-on-surface-variant">
+            Tidak perlu daftar akun, tidak perlu aplikasi tambahan. Cukup WhatsApp.
+          </p>
+        </div>
+
+        {/* Steps — vertical numbered list */}
+        <div className="max-w-xl mx-auto space-y-8 md:space-y-10">
+          {steps.map((step) => (
+            <div key={step.number} className="flex items-start gap-5 md:gap-6">
+              {/* Number circle */}
+              <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary text-on-primary flex items-center justify-center font-noto-serif text-headline-sm md:text-[26px] font-bold soft-shadow">
+                {step.number}
+              </div>
+              {/* Step content */}
+              <div className="pt-1 md:pt-2">
+                <h3 className="font-be-vietnam-pro text-body-lg md:text-[20px] font-semibold text-on-background mb-1">
+                  {step.title}
+                </h3>
+                <p className="font-be-vietnam-pro text-body-md text-on-surface-variant leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
             </div>
-            <h3 className="font-noto-serif text-headline-sm">{step.title}</h3>
-            <p className="font-be-vietnam-pro text-body-md text-on-surface-variant">
-              {step.description}
-            </p>
-          </div>
-        ))}
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-10 md:mt-12 text-center">
+          <a
+            href="https://wa.me/6281234567890"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary text-on-primary px-8 py-4 rounded-full font-be-vietnam-pro text-label-lg hover:bg-surface-tint transition-all soft-shadow min-h-[56px]"
+          >
+            <Icon name="chat" className="w-5 h-5" />
+            Mulai Chat Sekarang
+          </a>
+          <p className="font-be-vietnam-pro text-label-sm text-outline mt-3">
+            Sudah banyak pelanggan yang pesan dengan cara ini. Mudah, aman, dan nggak pernah mengecewakan.
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

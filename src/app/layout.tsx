@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Serif, Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 const notoSerif = Noto_Serif({
   variable: "--font-noto-serif",
@@ -16,9 +17,9 @@ const beVietnamPro = Be_Vietnam_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "Roti Bahagia - Artisanal Bakery",
+  title: "Roti Bahagia - Roti Segar Bakery Lokal",
   description:
-    "Roti segar bakery lokal — pesan lewat WhatsApp, siap hari ini. Roti tawar, croissant, donat, roti gandum, dan kue custom.",
+    "Roti segar bakery lokal: pesan lewat WhatsApp, siap hari ini. Roti tawar, croissant, donat, roti gandum, dan kue custom.",
 };
 
 export default function RootLayout({
@@ -31,7 +32,10 @@ export default function RootLayout({
       lang="id"
       className={`${notoSerif.variable} ${beVietnamPro.variable}`}
     >
-      <body className="min-h-full flex flex-col relative">{children}</body>
+      <body className="min-h-full flex flex-col relative">
+        {children}
+        <FloatingWhatsApp />
+      </body>
     </html>
   );
 }
